@@ -33,15 +33,27 @@ public enum Role: String {
 
 }
 
+public enum PartStat:String{
+    case TENTATIVE = "TENTATIVE"
+    case ACCEPTED = "ACCEPTED"
+    case NEEDS_ACTION = "NEEDS-ACTION"
+    case DECLINED = "DECLINED"
+    case DELEGATED = "DELEGATED"
+    case COMPLETED = "COMPLETED"
+    case IN_PROCESS = "IN-PROCESS"
+}
+
 public class MXLCalendarAttendee {
     public var uri: String
     public var commonName: String
     public var role: Role
+    public var participantStatus: PartStat
 
-    public init(withRole role: Role, commonName: String, andUri uri: String) {
+    public init(withRole role: Role, commonName: String, andUri uri: String, participantStatus:PartStat) {
         self.uri = uri
         self.commonName = commonName
         self.role = role
+        self.participantStatus = participantStatus
     }
 }
 
@@ -49,6 +61,7 @@ extension MXLCalendarAttendee: Equatable {
     public static func == (lhs: MXLCalendarAttendee, rhs: MXLCalendarAttendee) -> Bool {
         return lhs.uri == rhs.uri &&
             lhs.commonName == rhs.commonName &&
-            lhs.role == rhs.role
+            lhs.role == rhs.role &&
+            lhs.participantStatus == rhs.participantStatus
     }
 }
