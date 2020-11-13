@@ -132,7 +132,7 @@ public class MXLCalendarManager {
             return nil
         }
         
-        return MXLCalendarAttendee(withRole: roleEnum, commonName: comomName, andUri: uri, participantStatus:PartStat)
+        return MXLCalendarAttendee(withRole: roleEnum, commonName: comomName, andUri: uri, participantStatus: partStatEnum)
     }
 
     public func parse(icsString: String, withCompletionHandler callback: @escaping (MXLCalendar?, Error?) -> Void) {
