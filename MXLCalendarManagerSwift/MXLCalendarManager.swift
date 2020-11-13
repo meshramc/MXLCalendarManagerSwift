@@ -92,11 +92,11 @@ public class MXLCalendarManager {
         if let attributesPointer = attributesPointer {
             eventScanner = Scanner(string: attributesPointer as String)
 
-            eventScanner.scanUpTo("ROLE", into: nil)
+            eventScanner.scanUpTo("ROLE=", into: nil)
             eventScanner.scanUpTo(";", into: &holderPointer)
 
             if let holderPointer = holderPointer {
-                role = holderPointer.replacingOccurrences(of: "ROLE", with: "")
+                role = holderPointer.replacingOccurrences(of: "ROLE=", with: "")
             }
 
             eventScanner = Scanner(string: attributesPointer as String)
